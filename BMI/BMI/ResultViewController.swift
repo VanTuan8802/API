@@ -9,30 +9,23 @@ import UIKit
 
 class ResultViewController: UIViewController {
 
-    var age:Int = 0
-    var height:Int = 0
-    var weight:Int = 0
+    var resutlLable : String!
+    var bmiValueLable : String!
+    var noteLabel : String!
     
+    @IBOutlet weak var result: UILabel!
+    @IBOutlet weak var bmiValue: UILabel!
+    @IBOutlet weak var note: UILabel!
     @IBOutlet weak var reCaculate: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
     
 
     @IBAction func reCaculate(_ sender: Any) {
         self.dismiss(animated: true)
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

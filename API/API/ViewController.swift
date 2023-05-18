@@ -11,7 +11,7 @@ struct Todo : Codable{
     var userId : Int?
     var id : Int?
     var title : String?
-    var completed : String?
+    var completed : Bool?
 }
 
 struct Photo : Codable{
@@ -43,7 +43,7 @@ struct Post : Codable{
 }
 
 class ViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -52,38 +52,38 @@ class ViewController: UIViewController {
         let urlAlbum = "https://jsonplaceholder.typicode.com/albums"
         let urlComments = "https://jsonplaceholder.typicode.com/comments"
         let urlPosts = "https://jsonplaceholder.typicode.com/posts"
-        loadData(urlPhoto)
+        loadData(urlTodo)
     }
-
-
+    
+    
     func loadData(_ urlString: String) {
-            // Khởi tạo cấu hình cho URLSession
-            let sessionConfiguration = URLSessionConfiguration.ephemeral
+        // Khởi tạo cấu hình cho URLSession
+        let sessionConfiguration = URLSessionConfiguration.ephemeral
+        
+        // Khởi tạo URL
+        let url = URL(string: urlString)!
+        
+        // Khởi tạo session
+        let session = URLSession(configuration: sessionConfiguration)
+        
+        // Khởi tạo task
+        let task = session.dataTask(with: url) { data, response, error in
             
-            // Khởi tạo URL
-            let url = URL(string: urlString)!
-            
-            // Khởi tạo session
-            let session = URLSession(configuration: sessionConfiguration)
-            
-            // Khởi tạo task
-            let task = session.dataTask(with: url) { data, response, error in
-                
-                guard let data = data else {
-                    return
-                }
-                
-                // pass data thành json
-                do {
-                    let obj = try JSONDecoder().decode([Photo].self, from: data)
-                    print(obj.count)
-                } catch {
-                   print("Không thể đọc data")
-                }
-                
+            guard let data = data else {
+                return
             }
             
-            task.resume()
+            // pass data thành json
+            do {
+                let obj = try JSONDecoder().decode([Todo].self, from: data)
+                print(obj.count)
+            } catch {
+                print("Không thể đọc data")
+            }
+            
         }
-
+        
+        task.resume()
+    }
+    
 }

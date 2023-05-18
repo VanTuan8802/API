@@ -220,7 +220,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pHp-YH-Cqd">
-                                        <rect key="frame" x="19" y="425" width="323" height="74"/>
+                                        <rect key="frame" x="19" y="204" width="323" height="74"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -234,7 +234,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6M5-Se-dCG">
-                                        <rect key="frame" x="90" y="286" width="173" height="21"/>
+                                        <rect key="frame" x="19" y="406" width="315" height="81"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -248,7 +248,10 @@
                         <color key="backgroundColor" red="0.086295268581918064" green="0.080547795546716483" blue="0.15648675235834986" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </view>
                     <connections>
+                        <outlet property="bmiValue" destination="pHp-YH-Cqd" id="dDG-bD-TI1"/>
+                        <outlet property="note" destination="6M5-Se-dCG" id="y5Z-U3-PxL"/>
                         <outlet property="reCaculate" destination="P0Z-Ax-H0q" id="fvj-IN-irt"/>
+                        <outlet property="result" destination="DhI-Hz-DE8" id="43B-Gj-ilu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wNx-d4-qfL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -15,7 +15,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        ballView = UIView(frame: CGRect(x: 0, y: height, width: radius*2, height: radius*2))
+        ballView = UIView(frame: CGRect(x: 0, y: 0, width: radius*2, height: radius*2))
         
         view.addSubview(ballView)
         
@@ -29,15 +29,20 @@ class ViewController: UIViewController {
 
     @objc func runTimer()
     {
+        ballView.frame.origin.y = 0
+        height = height + 100
         ballView.center.y += 1
-        while(ballView.center.y >= (view.frame.maxY - radius ))
+        while(ballView.frame.origin.y >= (view.frame.maxY - radius ))
         {
-            if(ballView.center.y >= view.frame.maxY - radius)
-            {
-                height = height + 100
-                
-                ballView.center.y -= 1
-            }
+//            if(ballView.center.y >= view.frame.maxY - radius)
+//            {
+//                ballView.center.y -= 1
+//                while(ballView.center.y >= height)
+//                {
+//                    runTimer()
+//                }
+//
+//            }
             timer.invalidate()
         }
         
