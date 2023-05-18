@@ -11,8 +11,9 @@ class ViewController: UIViewController {
     var height : CGFloat  = 0
     var ballView : UIView!
     let radius : CGFloat = 30
-    var timer : Timer!
-
+    var timer1 : Timer!
+    var timer2 : Timer!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         ballView = UIView(frame: CGRect(x: 0, y: 0, width: radius*2, height: radius*2))
@@ -24,30 +25,29 @@ class ViewController: UIViewController {
         ballView.center = CGPoint(x: view.center.x, y: 100)
         
         //Khởi tạo Timer
-        timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(runTimer), userInfo: nil, repeats: true)
-    }
-
-    @objc func runTimer()
-    {
-        ballView.frame.origin.y = 0
-        height = height + 100
-        ballView.center.y += 1
-        while(ballView.frame.origin.y >= (view.frame.maxY - radius ))
-        {
-//            if(ballView.center.y >= view.frame.maxY - radius)
-//            {
-//                ballView.center.y -= 1
-//                while(ballView.center.y >= height)
-//                {
-//                    runTimer()
-//                }
-//
-//            }
-            timer.invalidate()
-        }
-        
+        timer1 = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(runTimer1), userInfo: nil, repeats: true)
     }
     
-
+    @objc func runTimer1()
+    {
+        ballView.frame.origin.y += 1
+        if(ballView.frame.origin.y >= view.bounds.height - ballView.bounds.height - 10)
+        {
+            timer1.invalidate()
+            timer2 = Timer.scheduledTimer(timeInterval: 0.001, target: self, selector: #selector(runTimer2), userInfo: nil, repeats: true)
+        }
+    }
+    
+    @objc func runTimer2() {
+        ballView.frame.origin.y -= 1
+        if (ballView.frame.origin.y <= height+50)
+        {
+            height += 100
+            timer2.invalidate()
+            timer1 = Timer.scheduledTimer(timeInterval: 0.001, target: self, selector: #selector(runTimer1), userInfo: nil, repeats: true)
+        }
+    }
+    
+    
 }
 
